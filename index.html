@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Assessment Tool</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">Business Assessment Tool</a>
+            <nav class="nav">
+                <a href="#" class="btn btn-secondary nav-item">Login</a>
+                <a href="#" class="btn btn-primary nav-item">Register</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Optimize Your Business with AI-Powered Assessment</h1>
+            <p>Our intelligent assessment tool analyzes your business context first, then provides tailored recommendations for operations, technology, and team capabilities.</p>
+            <button id="getStartedBtn" class="btn btn-primary btn-lg">Get Started</button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="text-center">How It Works</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Context-First Approach</h3>
+                    <p>We start by understanding your company type, size, and your role to provide truly relevant insights.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Tailored Assessment</h3>
+                    <p>Based on your context, we analyze processes, technology, and team capabilities that matter to your role.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>AI-Powered Insights</h3>
+                    <p>Receive actionable recommendations and insights specific to your organizational structure and needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Assessment Container -->
+    <section id="assessmentContainer" class="assessment-container">
+        <div class="container">
+            <div class="assessment-header">
+                <h2>Business Assessment</h2>
+                <p>Answer a few questions to receive tailored insights and recommendations.</p>
+            </div>
+
+            <!-- Progress Indicator -->
+            <div class="progress-container">
+                <div class="progress-indicator">
+                    <div class="step current">1</div>
+                    <div class="step">2</div>
+                    <div class="step">3</div>
+                    <div class="step">4</div>
+                </div>
+                <div class="progress-text">
+                    <span class="current-step">Step 1 of 4:</span> Company Context
+                </div>
+            </div>
+
+            <!-- Step 1: Company Context -->
+            <div id="step1" class="assessment-step">
+                <h2>Tell us about your company</h2>
+
+                <div class="question-group" data-id="company-type">
+                    <h3>What type of organization are you part of? <span class="help-icon" data-question="company-type">?</span></h3>
+                    <div class="options-grid">
+                        <div class="option" data-question="company-type" data-value="startup">
+                            <h4>Startup</h4>
+                            <p>Early-stage company focused on innovation and growth</p>
+                        </div>
+                        <div class="option" data-question="company-type" data-value="small-business">
+                            <h4>Small Business</h4>
+                            <p>Established business with fewer than 50 employees</p>
+                        </div>
+                        <div class="option" data-question="company-type" data-value="medium-business">
+                            <h4>Medium Business</h4>
+                            <p>50-500 employees with established operations</p>
+                        </div>
+                        <div class="option" data-question="company-type" data-value="enterprise">
+                            <h4>Enterprise</h4>
+                            <p>Large organization with 500+ employees</p>
+                        </div>
+                        <div class="option" data-question="company-type" data-value="non-profit">
+                            <h4>Non-Profit</h4>
+                            <p>Mission-driven organization with social impact focus</p>
+                        </div>
+                        <div class="option" data-question="company-type" data-value="government">
+                            <h4>Government</h4>
+                            <p>Public sector organization or agency</p>
+                        </div>
+                        <div class="option" data-question="company-type" data-value="education">
+                            <h4>Educational Institution</h4>
+                            <p>School, college, university or training organization</p>
+                        </div>
+                        <div class="option" data-question="company-type" data-value="other">
+                            <h4>Other</h4>
+                            <p>None of the above categories</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-group" data-id="business-maturity">
+                    <h3>What is your organization's current business lifecycle stage? <span class="help-icon" data-question="business-maturity">?</span></h3>
+                    <div class="options-grid">
+                        <div class="option" data-question="business-maturity" data-value="formation">
+                            <h4>Formation</h4>
+                            <p>Developing initial product/service, defining market fit</p>
+                        </div>
+                        <div class="option" data-question="business-maturity" data-value="validation">
+                            <h4>Validation</h4>
+                            <p>Testing market fit, acquiring initial customers</p>
+                        </div>
+                        <div class="option" data-question="business-maturity" data-value="growth">
+                            <h4>Growth</h4>
+                            <p>Scaling operations, expanding customer base</p>
+                        </div>
+                        <div class="option" data-question="business-maturity" data-value="expansion">
+                            <h4>Expansion</h4>
+                            <p>Entering new markets or product categories</p>
+                        </div>
+                        <div class="option" data-question="business-maturity" data-value="maturity">
+                            <h4>Maturity</h4>
+                            <p>Stable operations with established market position</p>
+                        </div>
+                        <div class="option" data-question="business-maturity" data-value="renewal">
+                            <h4>Renewal</h4>
+                            <p>Reinventing business model or undergoing transformation</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-group" data-id="industry">
+                    <h3>What industry are you in? <span class="help-icon" data-question="industry">?</span></h3>
+                    <div class="options-grid">
+                        <div class="option" data-question="industry" data-value="technology">
+                            <h4>Technology</h4>
+                            <p>Software, hardware, IT services, telecommunications</p>
+                        </div>
+                        <div class="option" data-question="industry" data-value="finance">
+                            <h4>Finance & Insurance</h4>
+                            <p>Banking, investments, insurance, fintech</p>
+                        </div>
+                        <div class="option" data-question="industry" data-value="healthcare">
+                            <h4>Healthcare & Life Sciences</h4>
+                            <p>Medical services, pharmaceuticals, biotech, health tech</p>
+                        </div>
+                        <div class="option" data-question="industry" data-value="retail">
+                            <h4>Retail & E-commerce</h4>
+                            <p>Consumer goods, online retail, brick-and-mortar stores</p>
+                        </div>
+                        <div class="option" data-question="industry" data-value="manufacturing">
+                            <h4>Manufacturing</h4>
+                            <p>Production, assembly, industrial goods, equipment</p>
+                        </div>
+                        <div class="option" data-question="industry" data-value="professional-services">
+                            <h4>Professional Services</h4>
+                            <p>Consulting, legal, accounting, marketing agencies</p>
+                        </div>
+                        <div class="option" data-question="industry" data-value="education">
+                            <h4>Education</h4>
+                            <p>K-12, higher education, edtech, training services</p>
+                        </div>
+                        <div class="option" data-question="industry" data-value="real-estate">
+                            <h4>Real Estate & Construction</h4>
+                            <p>Property development, construction, facilities management</p>
+                        </div>
+                        <div class="option" data-question="industry" data-value="media">
+                            <h4>Media & Entertainment</h4>
+                            <p>Publishing, broadcasting, film, gaming, digital media</p>
+                        </div>
+                        <div class="option" data-question="industry" data-value="hospitality">
+                            <h4>Hospitality & Tourism</h4>
+                            <p>Hotels, restaurants, travel services, events</p>
+                        </div>
+                        <div class="option" data-question="industry" data-value="energy">
+                            <h4>Energy & Utilities</h4>
+                            <p>Oil & gas, renewable energy, utilities, cleantech</p>
+                        </div>
+                        <div class="option" data-question="industry" data-value="transportation">
+                            <h4>Transportation & Logistics</h4>
+                            <p>Shipping, freight, supply chain, mobility services</p>
+                        </div>
+                        <div class="option" data-question="industry" data-value="agriculture">
+                            <h4>Agriculture & Food</h4>
+                            <p>Farming, food production, agtech, food services</p>
+                        </div>
+                        <div class="option" data-question="industry" data-value="non-profit">
+                            <h4>Non-Profit & Social Services</h4>
+                            <p>Charities, foundations, social enterprises, NGOs</p>
+                        </div>
+                        <div class="option" data-question="industry" data-value="government">
+                            <h4>Government & Public Sector</h4>
+                            <p>Federal, state, local agencies, public services</p>
+                        </div>
+                        <div class="option" data-question="industry" data-value="other">
+                            <h4>Other</h4>
+                            <p>Industry not listed above</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Industry Sub-category Question (Hidden by default) -->
+                <div id="industry-subcategory-question" class="question-group" style="display: none;">
+                    <h3>Please specify your industry sub-category:</h3>
+                    <div id="industry-subcategory-options" class="options-grid">
+                        <!-- Sub-category options will be dynamically populated based on industry selection -->
+                    </div>
+                </div>
+
+                <!-- Other Industry Question (Hidden by default) -->
+                <div id="other-industry-question" class="question-group" style="display: none;">
+                    <h3>Please specify your industry:</h3>
+                    <div class="form-group">
+                        <input type="text" id="other-industry-input" class="form-control" placeholder="Enter your industry">
+                    </div>
+                </div>
+
+                <!-- Startup Funding Question (Hidden by default) -->
+                <div id="startup-funding-question" class="question-group" style="display: none;">
+                    <h3>What stage of funding are you at?</h3>
+                    <div class="options-grid">
+                        <div class="option" data-question="startup-funding" data-value="pre-seed">
+                            <h4>Pre-seed</h4>
+                            <p>Initial funding to develop concept or prototype</p>
+                        </div>
+                        <div class="option" data-question="startup-funding" data-value="bootstrapped">
+                            <h4>Bootstrapped</h4>
+                            <p>Self-funded or friends & family</p>
+                        </div>
+                        <div class="option" data-question="startup-funding" data-value="seed">
+                            <h4>Seed</h4>
+                            <p>Angel or seed funding</p>
+                        </div>
+                        <div class="option" data-question="startup-funding" data-value="series-a">
+                            <h4>Series A</h4>
+                            <p>First round of venture capital</p>
+                        </div>
+                        <div class="option" data-question="startup-funding" data-value="series-b-plus">
+                            <h4>Series B+</h4>
+                            <p>Later stage venture capital</p>
+                        </div>
+                        <div class="option" data-question="startup-funding" data-value="profitable">
+                            <h4>Profitable</h4>
+                            <p>Operating without external funding needs</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nav-buttons">
+                    <div></div> <!-- Empty div for flex spacing -->
+                    <button class="btn btn-primary next-btn" data-current-step="1">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 2: User Context -->
+            <div id="step2" class="assessment-step">
+                <h2>Tell us about your role</h2>
+
+                <div class="question-group" data-id="role">
+                    <h3>What is your role in the organization?</h3>
+                    <div class="options-grid">
+                        <div class="option" data-question="role" data-value="executive">
+                            <h4>Executive Leadership</h4>
+                            <p>C-level, VP, Director</p>
+                        </div>
+                        <div class="option" data-question="role" data-value="middle-management">
+                            <h4>Middle Management</h4>
+                            <p>Department head, Manager</p>
+                        </div>
+                        <div class="option" data-question="role" data-value="team-lead">
+                            <h4>Team Lead</h4>
+                            <p>Supervisor, Project Lead</p>
+                        </div>
+                        <div class="option" data-question="role" data-value="individual-contributor">
+                            <h4>Individual Contributor</h4>
+                            <p>Specialist, Analyst, Developer</p>
+                        </div>
+                        <div class="option" data-question="role" data-value="founder">
+                            <h4>Founder/Owner</h4>
+                            <p>Entrepreneur, Business Owner</p>
+                        </div>
+                        <div class="option" data-question="role" data-value="consultant">
+                            <h4>Consultant/Advisor</h4>
+                            <p>External expert providing guidance</p>
+                        </div>
+                        <div class="option" data-question="role" data-value="board">
+                            <h4>Board Member</h4>
+                            <p>Board of Directors, Advisory Board</p>
+                        </div>
+                        <div class="option" data-question="role" data-value="other">
+                            <h4>Other</h4>
+                            <p>Role not listed above</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-group" data-id="functional-area">
+                    <h3>What is your primary functional area?</h3>
+                    <div class="options-grid">
+                        <div class="option" data-question="functional-area" data-value="general-management">
+                            <h4>General Management</h4>
+                            <p>Overall business leadership</p>
+                        </div>
+                        <div class="option" data-question="functional-area" data-value="operations">
+                            <h4>Operations</h4>
+                            <p>Process management, logistics, supply chain</p>
+                        </div>
+                        <div class="option" data-question="functional-area" data-value="technology">
+                            <h4>Technology / IT</h4>
+                            <p>Software development, IT infrastructure, security</p>
+                        </div>
+                        <div class="option" data-question="functional-area" data-value="sales">
+                            <h4>Sales</h4>
+                            <p>Revenue generation, business development</p>
+                        </div>
+                        <div class="option" data-question="functional-area" data-value="marketing">
+                            <h4>Marketing</h4>
+                            <p>Brand, demand generation, communications</p>
+                        </div>
+                        <div class="option" data-question="functional-area" data-value="finance">
+                            <h4>Finance</h4>
+                            <p>Financial planning, accounting, treasury</p>
+                        </div>
+                        <div class="option" data-question="functional-area" data-value="hr">
+                            <h4>Human Resources</h4>
+                            <p>Talent acquisition, development, culture</p>
+                        </div>
+                        <div class="option" data-question="functional-area" data-value="product">
+                            <h4>Product</h4>
+                            <p>Product management, design, development</p>
+                        </div>
+                        <div class="option" data-question="functional-area" data-value="customer-service">
+                            <h4>Customer Service</h4>
+                            <p>Support, success, experience</p>
+                        </div>
+                        <div class="option" data-question="functional-area" data-value="research">
+                            <h4>Research & Development</h4>
+                            <p>Innovation, scientific research, engineering</p>
+                        </div>
+                        <div class="option" data-question="functional-area" data-value="legal">
+                            <h4>Legal & Compliance</h4>
+                            <p>Legal affairs, regulatory compliance</p>
+                        </div>
+                        <div class="option" data-question="functional-area" data-value="other">
+                            <h4>Other</h4>
+                            <p>Function not listed above</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-group" data-id="cross-functional">
+                    <h3>Which other departments do you regularly collaborate with? (Select all that apply)</h3>
+                    <div class="multi-option" data-value="operations">Operations</div>
+                    <div class="multi-option" data-value="technology">Technology / IT</div>
+                    <div class="multi-option" data-value="sales">Sales</div>
+                    <div class="multi-option" data-value="marketing">Marketing</div>
+                    <div class="multi-option" data-value="finance">Finance</div>
+                    <div class="multi-option" data-value="hr">Human Resources</div>
+                    <div class="multi-option" data-value="product">Product</div>
+                    <div class="multi-option" data-value="customer-service">Customer Service</div>
+                    <div class="multi-option" data-value="research">Research & Development</div>
+                    <div class="multi-option" data-value="legal">Legal & Compliance</div>
+                    <div class="multi-option" data-value="external">External Partners/Vendors</div>
+                </div>
+
+                <!-- Executive Priorities Question (Hidden by default) -->
+                <div id="executive-priorities-question" class="question-group" style="display: none;">
+                    <h3>What are your top executive priorities? (Select all that apply)</h3>
+                    <div class="multi-option" data-value="growth">Business Growth</div>
+                    <div class="multi-option" data-value="profitability">Profitability</div>
+                    <div class="multi-option" data-value="innovation">Innovation</div>
+                    <div class="multi-option" data-value="efficiency">Operational Efficiency</div>
+                    <div class="multi-option" data-value="talent">Talent Management</div>
+                    <div class="multi-option" data-value="digital">Digital Transformation</div>
+                    <div class="multi-option" data-value="customer">Customer Experience</div>
+                    <div class="multi-option" data-value="risk">Risk Management</div>
+                    <div class="multi-option" data-value="sustainability">Sustainability</div>
+                    <div class="multi-option" data-value="market-expansion">Market Expansion</div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="btn btn-secondary back-btn" data-current-step="2">Back</button>
+                    <button class="btn btn-primary next-btn" data-current-step="2">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Business Focus Areas -->
+            <div id="step3" class="assessment-step">
+                <h2>Business Focus Areas</h2>
+
+                <div class="question-group" data-id="focus-areas">
+                    <h3>What are your organization's key focus areas? (Select all that apply)</h3>
+                    <div class="multi-option" data-value="business-growth">Business Growth & Market Expansion</div>
+                    <div class="multi-option" data-value="operational-efficiency">Operational Efficiency & Process Improvement</div>
+                    <div class="multi-option" data-value="technology-modernization">Technology Modernization & Digital Transformation</div>
+                    <div class="multi-option" data-value="customer-experience">Customer Experience & Retention</div>
+                    <div class="multi-option" data-value="product-innovation">Product/Service Innovation</div>
+                    <div class="multi-option" data-value="talent-development">Talent Acquisition & Development</div>
+                    <div class="multi-option" data-value="cost-optimization">Cost Optimization & Financial Performance</div>
+                    <div class="multi-option" data-value="data-analytics">Data Quality & Analytics Capabilities</div>
+                    <div class="multi-option" data-value="regulatory-compliance">Regulatory Compliance & Risk Management</div>
+                    <div class="multi-option" data-value="organizational-change">Organizational Change & Culture</div>
+                    <div class="multi-option" data-value="competitive-positioning">Competitive Positioning</div>
+                    <div class="multi-option" data-value="supply-chain">Supply Chain Optimization</div>
+                    <div class="multi-option" data-value="cybersecurity">Cybersecurity & Data Protection</div>
+                    <div class="multi-option" data-value="sustainability">Sustainability & ESG Initiatives</div>
+                    <div class="multi-option" data-value="decision-making">Decision-Making & Organizational Agility</div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="btn btn-secondary back-btn" data-current-step="3">Back</button>
+                    <button class="btn btn-primary next-btn" data-current-step="3">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Assessment Questions -->
+            <div id="step4" class="assessment-step">
+                <h2>Operations and Technology Assessment</h2>
+
+                <div class="question-group" data-id="operations-maturity">
+                    <h3>How would you describe your operations maturity? <span class="help-icon" data-question="operations-maturity">?</span></h3>
+                    <div class="options-grid">
+                        <div class="option" data-question="operations-maturity" data-value="ad-hoc">
+                            <h4>Ad-hoc</h4>
+                            <p>Processes are undocumented and reactive</p>
+                        </div>
+                        <div class="option" data-question="operations-maturity" data-value="defined">
+                            <h4>Defined</h4>
+                            <p>Basic processes are documented and somewhat consistent</p>
+                        </div>
+                        <div class="option" data-question="operations-maturity" data-value="measured">
+                            <h4>Measured</h4>
+                            <p>Processes are measured and controlled</p>
+                        </div>
+                        <div class="option" data-question="operations-maturity" data-value="optimized">
+                            <h4>Optimized</h4>
+                            <p>Processes are continuously improved and highly efficient</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-group" data-id="technology-maturity">
+                    <h3>How would you describe your technology maturity? <span class="help-icon" data-question="technology-maturity">?</span></h3>
+                    <div class="options-grid">
+                        <div class="option" data-question="technology-maturity" data-value="basic">
+                            <h4>Basic</h4>
+                            <p>Fundamental technology with limited integration</p>
+                        </div>
+                        <div class="option" data-question="technology-maturity" data-value="standard">
+                            <h4>Standard</h4>
+                            <p>Industry-standard technology with some integration</p>
+                        </div>
+                        <div class="option" data-question="technology-maturity" data-value="advanced">
+                            <h4>Advanced</h4>
+                            <p>Well-integrated technology with significant automation</p>
+                        </div>
+                        <div class="option" data-question="technology-maturity" data-value="cutting-edge">
+                            <h4>Cutting-edge</h4>
+                            <p>State-of-the-art technology driving business innovation</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-group" data-id="data-maturity">
+                    <h3>How would you describe your data management maturity? <span class="help-icon" data-question="data-maturity">?</span></h3>
+                    <div class="options-grid">
+                        <div class="option" data-question="data-maturity" data-value="fragmented">
+                            <h4>Fragmented</h4>
+                            <p>Data exists in silos with limited accessibility</p>
+                        </div>
+                        <div class="option" data-question="data-maturity" data-value="organized">
+                            <h4>Organized</h4>
+                            <p>Data is structured but with limited integration</p>
+                        </div>
+                        <div class="option" data-question="data-maturity" data-value="integrated">
+                            <h4>Integrated</h4>
+                            <p>Data is well-integrated with basic analytics capabilities</p>
+                        </div>
+                        <div class="option" data-question="data-maturity" data-value="advanced-analytics">
+                            <h4>Advanced Analytics</h4>
+                            <p>Comprehensive data strategy with advanced analytics</p>
+                        </div>
+                        <div class="option" data-question="data-maturity" data-value="ai-driven">
+                            <h4>AI-Driven</h4>
+                            <p>Data ecosystem leveraging AI for insights and automation</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Industry-specific questions will be inserted here -->
+                <div id="industry-specific-questions"></div>
+
+                <div class="nav-buttons">
+                    <button class="btn btn-secondary back-btn" data-current-step="4">Back</button>
+                    <button id="submitBtn" class="btn btn-primary">Submit Assessment</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Container -->
+    <section id="resultsContainer" class="results-container">
+        <div class="container">
+            <div class="results-header">
+                <h2>Your Business Assessment Results</h2>
+                <p>Based on your responses, we've generated personalized insights and recommendations.</p>
+            </div>
+
+            <!-- Context Summary -->
+            <div class="results-summary">
+                <h3>Assessment Context</h3>
+                <div class="context-summary">
+                    <div class="context-item">
+                        <h4>Organization Type</h4>
+                        <p id="companyType">Small Business</p>
+                    </div>
+                    <div class="context-item">
+                        <h4>Industry</h4>
+                        <p id="industry">Technology</p>
+                    </div>
+                    <div class="context-item">
+                        <h4>Business Lifecycle Stage</h4>
+                        <p id="businessMaturity">Growth</p>
+                    </div>
+                    <div class="context-item">
+                        <h4>Your Role</h4>
+                        <p id="role">Middle Management</p>
+                    </div>
+                </div>
+                <div id="assessmentSummary">
+                    <p>Based on your assessment, your organization has an overall maturity score of 65%. Your key strengths are in Strategy and Operations. Areas with opportunity for improvement include Technology and Innovation. As a small business in the technology industry, balancing process formalization with continued innovation will be key to your continued success.</p>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="results-charts">
+                <div class="chart-container">
+                    <h3>Maturity Radar</h3>
+                    <canvas id="maturityRadarChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Industry Benchmark</h3>
+                    <canvas id="benchmarkChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Progress Bars -->
+            <div class="progress-bars">
+                <div class="progress-bar-container">
+                    <div class="progress-bar-header">
+                        <h3>Operations Maturity</h3>
+                        <div id="operationsScore" class="progress-bar-score">65%</div>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div id="operationsProgress" class="progress-bar" style="width: 65%"></div>
+                    </div>
+                    <p id="operationsInsight" class="progress-bar-insight">Your operations show some opportunities for improvement in consistency and optimization.</p>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-header">
+                        <h3>Technology Maturity</h3>
+                        <div id="technologyScore" class="progress-bar-score">48%</div>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div id="technologyProgress" class="progress-bar" style="width: 48%"></div>
+                    </div>
+                    <p id="technologyInsight" class="progress-bar-insight">Your technology systems are functional but could benefit from better integration and strategic alignment.</p>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-header">
+                        <h3>Data Maturity</h3>
+                        <div id="dataScore" class="progress-bar-score">42%</div>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div id="dataProgress" class="progress-bar" style="width: 42%"></div>
+                    </div>
+                    <p id="dataInsight" class="progress-bar-insight">Your data management practices need improvement to unlock valuable insights and drive decision-making.</p>
+                </div>
+            </div>
+
+            <!-- Lead Capture -->
+            <div class="lead-capture">
+                <h3>Get Your Full Assessment Report</h3>
+                <p>Enter your email to receive a detailed PDF report with all insights and a personalized action plan.</p>
+                <form class="lead-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Send Report</button>
+                </form>
+            </div>
+
+            <!-- Prioritized Actions -->
+            <div class="recommendations">
+                <h3>Prioritized Actions</h3>
+                <div class="recommendations-container">
+                    <div class="action-area">
+                        <h4>Operations</h4>
+                        <ul class="action-list">
+                            <li class="action-item">Implement regular process reviews and updates</li>
+                            <li class="action-item">Develop comprehensive performance metrics</li>
+                            <li class="action-item">Create feedback mechanisms for process improvement</li>
+                            <li class="action-item">Establish cross-functional process governance</li>
+                        </ul>
+                    </div>
+                    <div class="action-area">
+                        <h4>Technology</h4>
+                        <ul class="action-list">
+                            <li class="action-item">Conduct a comprehensive technology assessment</li>
+                            <li class="action-item">Develop a technology roadmap</li>
+                            <li class="action-item">Implement basic system integration</li>
+                            <li class="action-item">Establish data management practices</li>
+                        </ul>
+                    </div>
+                    <div class="action-area">
+                        <h4>Strategy</h4>
+                        <ul class="action-list">
+                            <li class="action-item">Conduct a comprehensive strategic planning session</li>
+                            <li class="action-item">Develop clear, measurable strategic objectives</li>
+                            <li class="action-item">Implement regular strategy review meetings</li>
+                            <li class="action-item">Create alignment between strategy and operational activities</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommended Resources -->
+            <div class="resources">
+                <h3>Recommended Resources</h3>
+                <div class="resources-container">
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <span class="resource-type">Guide</span>
+                            <h4>Process Documentation Guide</h4>
+                            <p>Learn how to document your business processes effectively</p>
+                            <a href="#" class="resource-link">View Resource →</a>
+                        </div>
+                        <div class="resource-card">
+                            <span class="resource-type">Tool</span>
+                            <h4>Technology Stack Assessment</h4>
+                            <p>Evaluate your current technology infrastructure</p>
+                            <a href="#" class="resource-link">View Resource →</a>
+                        </div>
+                        <div class="resource-card">
+                            <span class="resource-type">Guide</span>
+                            <h4>Strategic Planning Fundamentals</h4>
+                            <p>Learn the basics of business strategy development</p>
+                            <a href="#" class="resource-link">View Resource →</a>
+                        </div>
+                        <div class="resource-card">
+                            <span class="resource-type">Template</span>
+                            <h4>Introduction to Standard Operating Procedures</h4>
+                            <p>Create your first SOPs for consistent operations</p>
+                            <a href="#" class="resource-link">View Resource →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Actions -->
+            <div class="results-actions">
+                <button id="resetBtn" class="btn btn-secondary">Start New Assessment</button>
+                <button id="printBtn" class="btn btn-primary">Print Results</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-logo">Business Assessment Tool</div>
+            <div class="footer-links">
+                <a href="#" class="footer-link">About</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Contact</a>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            © 2025 Business Assessment Tool. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/industry-questions.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/visualizations.js"></script>
+    <script src="js/recommendation-engine.js"></script>
+    <script src="js/progressive-disclosure.js"></script>
+    <script src="js/integration.js"></script>
+    <script src="js/responsive-enhancer.js"></script>
+    <script src="js/fix-selection-and-auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
